@@ -7,7 +7,6 @@ import BlogDetails from "../pages/BlogDetails";
 import Contact from "../pages/Contact";
 import ProductDetails from "../pages/ProductDetails";
 import NotFound from "../pages/NotFound";
-import Pagination from "../pages/Pagination";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +17,6 @@ export const router = createBrowserRouter([
       { path: "blogs", element: <Blogs /> },
       { path: "blog-details", element: <BlogDetails /> },
       { path: "contact-us", element: <Contact /> },
-      { path: "pagination", element: <Pagination /> },
     ]
   },
 
