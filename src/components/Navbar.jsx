@@ -63,8 +63,8 @@ const Navbar = () => {
           <ul className="navbar-nav m-auto d-flex gap-4 gap-xl-5">
             <li><NavLink className="nav-link p-0" to="/">Home</NavLink></li>
             <li><NavLink className="nav-link p-0" to="/products">Products</NavLink></li>
-            <li><NavLink className="nav-link p-0" to="/">My Account</NavLink></li>
-            <li><NavLink className="nav-link p-0" to="/">Shopping Cart</NavLink></li>
+            <li><NavLink className="nav-link p-0" to="javascript:void(0)">My Account</NavLink></li>
+            <li><NavLink className="nav-link p-0" to="javascript:void(0)">Shopping Cart</NavLink></li>
             <li><NavLink className="nav-link p-0" to="/blogs">Blogs</NavLink></li>
             <li><NavLink className="nav-link p-0" to="/contact-us">Contact Us</NavLink></li>
           </ul>
@@ -105,8 +105,8 @@ const Navbar = () => {
           <ul className="sidebar-menu list-unstyled mt-4">
             <li><NavLink onClick={() => setIsOpenSidebar(false)} to="/">Home</NavLink></li>
             <li><NavLink onClick={() => setIsOpenSidebar(false)} to="/products">Products</NavLink></li>
-            <li><NavLink onClick={() => setIsOpenSidebar(false)} to="/">My Account</NavLink></li>
-            <li><NavLink onClick={() => setIsOpenSidebar(false)} to="/">Shopping Cart</NavLink></li>
+            <li><NavLink onClick={() => setIsOpenSidebar(false)} to="javascript:void(0)">My Account</NavLink></li>
+            <li><NavLink onClick={() => setIsOpenSidebar(false)} to="javascript:void(0)">Shopping Cart</NavLink></li>
             <li><NavLink onClick={() => setIsOpenSidebar(false)} to="/blogs">Blogs</NavLink></li>
             <li><NavLink onClick={() => setIsOpenSidebar(false)} to="/contact-us">Contact Us</NavLink></li>
           </ul>

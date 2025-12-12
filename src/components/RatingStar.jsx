@@ -1,4 +1,4 @@
-export const RatingStar = ({ rating }) => {
+const RatingStar = ({ rating }) => {
   const totalStars = 5;
 
   const safeRating = Math.max(0, Math.min(rating, totalStars));
@@ -79,3 +79,5 @@ export const RatingStar = ({ rating }) => {
     </svg>
   );
 };
+
+export default RatingStar;

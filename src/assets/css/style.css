@@ -8105,6 +8105,7 @@ td.uncheck i {
 
 .list-details-section:first-child {
   padding-top: 30px !important;
+  padding-bottom: 30px !important;
 }
 
 #overview h4 {

@@ -11,7 +11,7 @@ import { Api } from "../services/api";
 
 const Contact = () => {
 
-  const { data: contactData, error } = useQuery({
+  const { data: contactData, error, refetch } = useQuery({
     queryKey: ["contact-data"],
 
     queryFn: async () => await Api.get("common_request_api/get_list_ddr/country_list").then(res => res.data.data),
@@ -39,7 +39,7 @@ const Contact = () => {
     },
 
     onError: (err) => {
-      toast.error(err?.message);
+      toast.error("Something went wrong!" || err?.message + "!");
     }
   });
 
@@ -57,8 +57,6 @@ const Contact = () => {
   };
 
 
-  if (error) return <h1>{error.message}</h1>;
-
 
   return (
     <>
@@ -67,90 +65,101 @@ const Contact = () => {
         <div className="container">
 
           {/* Breadcrumbs Start */}
-          <Breadcrumbs page2="Contact Us" />
+          <Breadcrumbs parentLabel="Contact Us" />
           {/* Breadcrumbs End */}
 
-          <div className="row mt-50">
-            <div className="section-title v2">
-              <h2 className="fw-bold">Contact Us</h2>
-            </div>
-            <form className="p-4 rounded-3" id="contact_form" style={{ boxShadow: "rgb(0 0 0 / 10%) 0px 4px 18px" }} onSubmit={handleSubmit(onSubmit)}>
-              <div className="row form-control-wrap">
-
-                <div className="col-12 col-md-6">
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      className="form-control fw-medium"
-                      placeholder="Name *"
-                      {...register("name")}
-                      style={{ color: "#595c5f" }}
-                    />
-
-                    <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.name?.message}</p>
-                  </div>
-                </div>
-
-                <div className="col-12 col-md-6">
-                  <div className="form-group">
-                    <input
-                      type="email"
-                      className="form-control fw-medium"
-                      placeholder="Email *"
-                      {...register("email")}
-                      style={{ color: "#595c5f" }}
-                    />
-
-                    <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.email?.message}</p>
-                  </div>
-                </div>
-
-                <div className="col-12 col-md-6">
-                  <div className="form-group">
-                    <select {...register("countryCode")} className="form-control fw-medium" style={{ color: "#595c5f", height: 45, borderRadius: 3 }}>
-                      <option value="">Select Country Code *</option>
-                      {contactData?.map(e => (
-                        <option value={e.country_code} key={e.id}>{e.val} ({e.country_code})</option>
-                      ))}
-                    </select>
-
-                    <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.countryCode?.message}</p>
-                  </div>
-                </div>
-
-                <div className="col-12 col-md-6">
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      className="form-control fw-medium"
-                      placeholder="Phone Number *"
-                      {...register("phone")}
-                      style={{ color: "#595c5f" }}
-                    />
-
-                    <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.phone?.message}</p>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <textarea
-                    className="form-control fw-medium"
-                    rows={8}
-                    placeholder="Message *"
-                    {...register("message")}
-                    style={{ color: "#595c5f" }}
-                  />
-
-                  <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.message?.message}</p>
-                </div>
-                <div className="form-group m-0">
-                  <button type="submit" className="btn v7">
-                    Send Message
-                  </button>
-                </div>
+          {error ? (
+            <>
+              <div className="container my-5">
+                <h1>{error.message}</h1>
               </div>
-            </form>
-          </div>
+
+              <button className="btn btn-outline-secondary" onClick={refetch}>Refetch Data</button>
+            </>
+          ) :
+            <div className="row mt-50">
+              <div className="section-title v2">
+                <h2 className="fw-bold">Contact Us</h2>
+              </div>
+              <form className="p-4 rounded-3" id="contact_form" style={{ boxShadow: "rgb(0 0 0 / 10%) 0px 4px 18px" }} onSubmit={handleSubmit(onSubmit)}>
+                <div className="row form-control-wrap">
+
+                  <div className="col-12 col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control fw-medium"
+                        placeholder="Name *"
+                        {...register("name")}
+                        style={{ color: "#595c5f" }}
+                      />
+
+                      <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.name?.message}</p>
+                    </div>
+                  </div>
+
+                  <div className="col-12 col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="email"
+                        className="form-control fw-medium"
+                        placeholder="Email *"
+                        {...register("email")}
+                        style={{ color: "#595c5f" }}
+                      />
+
+                      <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.email?.message}</p>
+                    </div>
+                  </div>
+
+                  <div className="col-12 col-md-6">
+                    <div className="form-group">
+                      <select {...register("countryCode")} className="form-control fw-medium" style={{ color: "#595c5f", height: 45, borderRadius: 3 }}>
+                        <option value="">Select Country Code *</option>
+                        {contactData?.map(e => (
+                          <option value={e.country_code} key={e.id}>{e.val} ({e.country_code})</option>
+                        ))}
+                      </select>
+
+                      <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.countryCode?.message}</p>
+                    </div>
+                  </div>
+
+                  <div className="col-12 col-md-6">
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control fw-medium"
+                        placeholder="Phone Number *"
+                        {...register("phone")}
+                        style={{ color: "#595c5f" }}
+                      />
+
+                      <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.phone?.message}</p>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <textarea
+                      className="form-control fw-medium"
+                      rows={8}
+                      placeholder="Message *"
+                      {...register("message")}
+                      style={{ color: "#595c5f" }}
+                    />
+
+                    <p className="text-danger ms-2 mt-1" style={{ height: 20 }}>{errors?.message?.message}</p>
+                  </div>
+                  <div className="form-group m-0">
+                    <button type="submit" className="btn v7">
+                      Send Message
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          }
+
         </div>
       </div>
       {/*Contact info ends */}

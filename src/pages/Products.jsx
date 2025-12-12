@@ -32,7 +32,7 @@ const Products = () => {
 
 
 
-  const { data: product, isPending, error, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
+  const { data: product, isPending, error, refetch, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
     queryKey: ["products"],
 
     queryFn: fetchProducts,
@@ -63,17 +63,14 @@ const Products = () => {
 
 
 
-  if (error) return <h1>{error.message}</h1>;
-
-
   return (
     <>
       {/*Listing filter starts*/}
-      <div className="filter-wrapper style1 section-padding">
+      <div className="filter-wrapper style1 section-padding mb-20">
         <div className="container">
 
           {/* Breadcrumbs Start */}
-          <Breadcrumbs page2="All Products" />
+          <Breadcrumbs parentLabel="All Products" />
           {/* Breadcrumbs End */}
 
           <div className="row">
@@ -412,7 +409,13 @@ const Products = () => {
                       <div className="row">
                         {Array.isArray(product?.pages) && product?.pages?.length ? product?.pages?.flat(Infinity)?.map(e => (
                           <ProductCard key={e.id} data={e} />
-                        )) : <h3>No more data</h3>}
+                        )) : (
+                          <div className="container my-5">
+                            <h1>{error.message}</h1>
+
+                            <button className="btn btn-outline-secondary mt-5" onClick={refetch}>Refetch Data</button>
+                          </div>
+                        )}
 
                         {isFetchingNextPage && (
                           <div className="w-100 position-relative d-flex justify-content-center">

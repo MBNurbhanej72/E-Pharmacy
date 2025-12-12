@@ -15,6 +15,7 @@
   --white-color: #fff;
   --black-color: #000;
   --primary-color: #018bc8;
+  --grey-text: #777;
 }
 
 
@@ -1321,7 +1322,7 @@ body {
 }
 
 .card .checked-price {
-  color: #a8a8a8;
+  color: var(--grey-text);
   font-weight: 400;
   font-size: 12px;
   text-decoration: line-through;
@@ -1363,7 +1364,7 @@ body {
 }
 
 .card .favorite svg {
-  fill: #a8a8a8;
+  fill: var(--grey-text);
 }
 
 .card .content {
@@ -1393,23 +1394,34 @@ body {
   text-transform: uppercase;
   font-size: 0.7rem;
   font-weight: 700;
-  color: #a8a8a8;
+  color: #a6a6a6;
   margin-top: 10px;
 }
 
-.card .rating {
-  color: #a8a8a8;
-  font-size: 0.6rem;
+.rating {
+  color: #a6a6a6;
+  font-size: 14px;
   font-weight: 700;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0 12px;
   margin-bottom: 15px;
+  line-height: 1;
 }
 
-.card .rating svg {
-  height: 12px;
+.rating svg {
+  height: 14px;
+  width: auto;
+  display: block;
+}
+
+.rating-value,
+.rating-stars,
+.rating-count {
+  display: flex;
+  align-items: center;
+  transform: translateY(1px);
 }
 
 .card .button-container .button {
@@ -1469,6 +1481,184 @@ body {
 }
 
 
+.pd-product-name {
+  color: #4b4b4b;
+}
+
+.pd-para {
+  margin-bottom: 4px !important;
+  font-weight: 500;
+  color: var(--grey-text);
+}
+
+.pd-para:first-child {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 15px;
+}
+
+.pd-price {
+  display: flex;
+  align-items: center;
+}
+
+.pd-price .pd-actual-price {
+  display: flex;
+  align-items: center;
+}
+
+.pd-price .pd-actual-price .pd-discount {
+  font-weight: 400;
+  font-size: 12px;
+  background-color: #cc0c39;
+  color: var(--white-color);
+  border-radius: 5px;
+  padding: 2px 10px;
+  margin-left: 8px;
+  margin-right: 5px;
+}
+
+.pd-price .rupees-symbol {
+  margin-left: 10px;
+  font-size: 15px !important;
+  vertical-align: super;
+}
+
+.pd-price .pd-actual-price span {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 35px;
+}
+
+.pd-price .pd-mrp {
+  color: var(--grey-text);
+  text-decoration: line-through;
+  font-size: 15px;
+}
+
+.pd-price .pd-mrp span {
+  color: var(--grey-text);
+  text-decoration: line-through;
+  font-size: 15px;
+}
+
+.pd-price .pd-mrp {
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.pd-mrp .rupees-symbol {
+  font-size: 12px !important;
+}
+
+.pd-price .pd-mrp::before {
+  content: "";
+  display: none;
+}
+
+.pd-quantity span {
+  width: 143px;
+}
+
+.pd-quantity,
+.pd-pin-code {
+  font-weight: 500;
+  color: var(--grey-text);
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.pd-quantity button,
+.pd-pin-code button,
+.pd-buy-btn button {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: 1.5px solid transparent;
+  transition: all 0.4s;
+}
+
+.pd-quantity button:hover,
+.pd-pin-code button:hover,
+.pd-buy-btn button:hover {
+  background-color: transparent;
+  border: 1.5px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.pd-quantity input,
+.pd-pin-code input {
+  width: 50px;
+  height: 35px;
+  background-color: transparent;
+  color: var(--primary-color);
+  border-radius: 5px;
+  border: 1.5px solid var(--primary-color);
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.pd-pin-code {
+  margin-bottom: 30px;
+}
+
+.pd-pin-code button {
+  width: auto;
+  padding: 10px;
+}
+
+.pd-pin-code input {
+  width: 150px;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.pd-pin-code input:focus,
+.pd-pin-code input:focus-visible {
+  border: 1.5px solid var(--primary-color) !important;
+}
+
+.pd-buy-btn button {
+  width: auto;
+  padding: 10px 30px;
+}
+
+.pd-upper-details .favorite {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -20px;
+  right: -10px;
+  cursor: pointer;
+}
+
+.pd-upper-details .favorite input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pd-upper-details .favorite input:checked~svg {
+  animation: bouncing 0.5s;
+  fill: rgb(255, 95, 95);
+  filter: drop-shadow(0px 3px 1px rgba(53, 53, 53, 0.14));
+}
+
+.pd-upper-details .favorite svg {
+  fill: var(--grey-text);
+}
 
 .pd-tabs-wrapper {
   background: #ffffff;
@@ -1532,9 +1722,348 @@ body {
 }
 
 .pd-tab-content {
-  padding: 24px 30px 28px;
+  padding: 30px;
   background: #ffffff;
 }
+
+.spec-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.spec-list li {
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px 0;
+  border-bottom: 1.8px solid #f1f1f1;
+  font-size: 16px;
+  color: #444;
+}
+
+.spec-list li:last-child {
+  border-bottom: none;
+}
+
+.spec-list li span {
+  width: 180px;
+  font-weight: 500;
+  color: #444;
+}
+
+
+.card.property-card {
+  width: 100%;
+  height: 100%;
+  padding: 20px 15px !important;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+.list .card:hover {
+  transform: scale(1);
+}
+
+.entry-img {
+  position: relative;
+  width: 85%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.entry-img img {
+  width: 80%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+  mix-blend-mode: multiply !important;
+}
+
+.entry-title {
+  font-size: 15px;
+  margin: 10px 0 5px;
+  font-weight: 600;
+  color: #4b4b4b;
+  transition: all 0.4s;
+}
+
+.card.property-card .price {
+  color: #4b4b4b;
+  transition: all 0.4s;
+}
+
+/* ================== SLIDER ================== */
+
+/* is slider ke liye specific vars */
+.slider.trending-slider {
+  --width: 270px;
+  --height: 350px;
+  /* jitne products hon utna yahan set karo */
+  width: 100%;
+  height: var(--height);
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 5% 90%, transparent);
+}
+
+.slider.trending-slider .list {
+  display: flex;
+  width: 100%;
+  min-width: calc(var(--width) * var(--quantity));
+  position: relative;
+}
+
+.slider.trending-slider .list .item {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  left: 100%;
+  animation: autoRun 40s linear infinite;
+  transition: 0.4s;
+  filter: grayscale(0);
+  padding: 20px 0;
+}
+
+/* JS wale --position ko CSS se nth-child se set kiya */
+.slider.trending-slider .list .item:nth-child(1) {
+  --position: 1;
+}
+
+.slider.trending-slider .list .item:nth-child(2) {
+  --position: 2;
+}
+
+.slider.trending-slider .list .item:nth-child(3) {
+  --position: 3;
+}
+
+.slider.trending-slider .list .item:nth-child(4) {
+  --position: 4;
+}
+
+.slider.trending-slider .list .item:nth-child(5) {
+  --position: 5;
+}
+
+.slider.trending-slider .list .item:nth-child(6) {
+  --position: 6;
+}
+
+.slider.trending-slider .list .item:nth-child(7) {
+  --position: 7;
+}
+
+.slider.trending-slider .list .item:nth-child(8) {
+  --position: 8;
+}
+
+.slider.trending-slider .list .item:nth-child(9) {
+  --position: 9;
+}
+
+/* delay formula same rakha */
+.slider.trending-slider .list .item {
+  animation-delay: calc((40s / var(--quantity)) * (var(--position) - 1) - 40s) !important;
+}
+
+@keyframes autoRun {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: calc(var(--width) * -1);
+  }
+}
+
+/* ========= HOVER GRAY LOGIC ========= */
+
+/* ⛔ 1) Kisi bhi card par hover hote hi 
+      SAARE items ki animation pause ho jaaye */
+.slider.trending-slider:has(.card.property-card:hover) .list .item {
+  animation-play-state: paused !important;
+}
+
+/* ⛔ 2) Sirf NON-hovered items ko grayscale karo */
+.slider.trending-slider:has(.card.property-card:hover) .list .item:not(:has(.card.property-card:hover)) {
+  filter: grayscale(1);
+}
+
+/* ⛔ 3) NON-hovered items ka text grey */
+.slider.trending-slider:has(.card.property-card:hover) .list .item:not(:has(.card.property-card:hover)) .entry-title,
+.slider.trending-slider:has(.card.property-card:hover) .list .item:not(:has(.card.property-card:hover)) .price,
+.slider.trending-slider:has(.card.property-card:hover) .list .item:not(:has(.card.property-card:hover)) .price .discount-percent,
+.slider.trending-slider:has(.card.property-card:hover) .list .item:not(:has(.card.property-card:hover)) .price .discount-percent::before {
+  color: #9b9b9b;
+}
+
+/* ⛔ 4) Discount badge ka background bhi grey */
+.slider.trending-slider:has(.card.property-card:hover) .list .item:not(:has(.card.property-card:hover)) .price .discount-percent::before {
+  background-color: #9b9b9b;
+}
+
+/* ⛔ 5) Hovered item normal color + full bright */
+.slider.trending-slider .list .item:hover {
+  filter: grayscale(0) !important;
+}
+
+
+
+.product-invoice-page {
+  max-width: 1100px;
+}
+
+.product-invoice-card {
+  border-radius: 1rem;
+}
+
+.product-invoice-card:hover {
+  transform: scale(1);
+}
+
+.pi-main-image-wrapper {
+  position: relative;
+  background: #f8f9fa;
+  padding: 0.75rem;
+  border-radius: 0.85rem;
+  height: 350px;
+}
+
+.pi-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pi-badge-stock {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+}
+
+.bg-success-subtle {
+  background-color: #e8f5e9 !important;
+}
+
+.bg-danger-subtle {
+  background-color: #ffebee !important;
+}
+
+.pi-thumb-wrapper .pi-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  border: 1px solid #e4e6eb;
+  cursor: pointer;
+}
+
+.pi-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pi-meta-list li {
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.pi-meta-list li span {
+  font-weight: 500;
+  color: #6c757d;
+  margin-right: 0.25rem;
+}
+
+.pi-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.pi-disclaimer-box {
+  background: #fff8e1;
+  border: 1px dashed #ffb300;
+}
+
+.pi-rating-stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.pi-rating-stars svg {
+  font-size: 0.75rem;
+  opacity: 0.3;
+}
+
+.pi-rating-stars svg.active {
+  opacity: 1;
+}
+
+.pi-review-table th,
+.pi-review-table td {
+  font-size: 0.8rem;
+}
+
+.badge.bg-label-primary {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.badge.bg-label-secondary {
+  background: #eceff1;
+  color: #455a64;
+}
+
+.badge.bg-label-info {
+  background: #e0f7fa;
+  color: #00838f;
+}
+
+.badge.bg-label-success {
+  background: #e6f4ea;
+  color: #1b5e20;
+}
+
+/* PRINT MODE FIX */
+@media print {
+
+  /* Container width fix */
+  .product-invoice-page {
+    max-width: 700px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Image wrapper height fix */
+  .pi-main-image-wrapper {
+    height: 300px !important;   /* reduce height */
+    padding: 6px !important;
+  }
+
+  /* Main image fix */
+  .pi-main-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* All thumbnails small */
+  .pi-thumb {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+
+
+
 
 
 

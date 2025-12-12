@@ -1,9 +1,9 @@
 import { FaEye } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { RatingStar } from "./RatingStar";
+import RatingStar from "./RatingStar";
+
 
 const ProductCard = ({ data }) => {
-  console.log("🚀 ~ ProductCard ~ data:", data);
   return (
     <div className="col-xl-3 col-md-6 col-sm-12 mb-5">
       <div className="card h-100 justify-content-between">
@@ -43,7 +43,7 @@ const ProductCard = ({ data }) => {
           <div className="price">
             {data?.discount_percent > 0 &&
               <span className="discount-percent me-2" style={{ marginLeft: 12 }}>
-                {data.discount_percent}%
+                {data?.discount_percent}%
               </span>
             }
 
@@ -51,6 +51,7 @@ const ProductCard = ({ data }) => {
           </div>
 
         </div>
+        
         <label className="favorite">
           <input defaultChecked="" type="checkbox" />
           <svg
@@ -72,7 +73,7 @@ const ProductCard = ({ data }) => {
         </div>
 
         <div className="button-container d-flex flex-column justify-content-center">
-          <div className="rating">
+          <div className="rating" style={{fontSize:12}}>
             <RatingStar rating={data?.avg_rate} /> ({data?.total_review})
           </div>
 

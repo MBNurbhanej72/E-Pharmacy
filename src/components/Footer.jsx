@@ -10,7 +10,7 @@ import { Api } from "../services/api";
 
 const Footer = () => {
 
-  const { data: blogs, error, isPending } = useQuery({
+  const { data: blogs, error, isPending, refetch } = useQuery({
     queryKey: ["blogs"],
 
     queryFn: async () =>
@@ -22,10 +22,6 @@ const Footer = () => {
 
     staleTime: 24 * 60 * 60 * 1000, // 1 Day
   });
-
-
-
-  if (error) return <h1>{error.message}</h1>;
 
 
 
@@ -214,7 +210,14 @@ const Footer = () => {
                         </div>
                       </article>
                     </li>
-                  )) : "No Data Found!"}
+                  )) :
+                    <div className="d-flex flex-column">
+                      {error?.message}
+
+                      <button className="btn btn-outline-secondary mt-2" onClick={refetch} style={{ width: "fit-content" }}>Refetch Data</button>
+                    </div>
+                  }
+
                 </ul>
               </section>
             </div>

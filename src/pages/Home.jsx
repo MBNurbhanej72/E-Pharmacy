@@ -15,7 +15,7 @@ import { Api } from "../services/api";
 const Home = () => {
 
   //? Swiper Api
-  const { data: swiperData, isPending, error } = useQuery({
+  const { data: swiperData, isPending, error, refetch } = useQuery({
     queryKey: ["swiperData"],
 
     queryFn: async () => await Api.get("common_request_api/banner_listing?page=1").then(res => res.data.data),
@@ -55,9 +55,6 @@ const Home = () => {
 
 
 
-  if (error) return <h1>{error.message}</h1>;
-
-
   // const img = ["/images/banner1.png", "/images/banner2.jpg", "/images/banner3.jpg"];
 
 
@@ -94,7 +91,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="page-wrapper mt-3" style={{ height: `${isPending ? "100vh" : "100%"}` }}>
+      <div className="page-wrapper mt-3 mb-120" style={{ height: `${isPending ? "100vh" : "100%"}` }}>
         <div className="swiper-main">
           {isPending ? <div className="loader-main"><span className="loader" /></div> :
             <Swiper
@@ -114,7 +111,13 @@ const Home = () => {
                   <SwiperSlide key={e.id}>
                     <img src={e.banner} alt="Slider Image" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </SwiperSlide>
-                ))) : null}
+                ))) :
+                <div className="container my-5">
+                  <h1>{error?.message}</h1>
+
+                  <button className="btn btn-outline-secondary mt-5" onClick={refetch}>Refetch Data</button>
+                </div>
+              }
             </Swiper>
           }
 

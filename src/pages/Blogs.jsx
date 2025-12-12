@@ -10,17 +10,13 @@ const Blogs = () => {
   const navigate = useNavigate();
 
 
-  const { data: blogs, isPending, error } = useQuery({
+  const { data: blogs, isPending, error, refetch } = useQuery({
     queryKey: ["blogs"],
 
     queryFn: async () => await Api.get("common_request_api/get_blog_listing").then((res) => res.data.data),
 
     staleTime: 24 * 60 * 60 * 1000, // 1 Day
   });
-
-
-
-  if (error) return <h1>{error.message}</h1>;
 
 
 
@@ -32,7 +28,7 @@ const Blogs = () => {
           <div className="container">
 
             {/* Breadcrumbs Start */}
-            <Breadcrumbs page2="All Blogs" />
+            <Breadcrumbs parentLabel="All Blogs" />
             {/* Breadcrumbs End */}
 
             <div className="row mb-3">
@@ -83,7 +79,11 @@ const Blogs = () => {
                     </div>
                   ))
                 ) : (
-                  "No Data Found !"
+                  <div className="container my-5">
+                    <h1>{error.message}</h1>
+
+                    <button className="btn btn-outline-secondary mt-5" onClick={refetch}>Refetch Data</button>
+                  </div>
                 )}
               </div>
             </div>

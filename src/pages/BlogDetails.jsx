@@ -13,7 +13,7 @@ const BlogDetails = () => {
         <div className="container">
 
           {/* Breadcrumbs Start */}
-          <Breadcrumbs navigate="blogs" page2="All Blogs" page3="Blog Detail" />
+          <Breadcrumbs parentPath="blogs" parentLabel="All Blogs" currentLabel="Blog Detail" />
           {/* Breadcrumbs End */}
 
           <div className="row">

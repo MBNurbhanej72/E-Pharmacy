@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Breadcrumbs = ({ page2, page3, navigate }) => {
+const Breadcrumbs = ({ parentLabel, currentLabel, parentPath }) => {
   return (
     <ul className="breadcrumbs d-flex gap-2 p-0">
       <li>
@@ -9,20 +9,22 @@ const Breadcrumbs = ({ page2, page3, navigate }) => {
 
       <li className="fs-6 text-secondary">/</li>
 
-      {page3 ?
+      {currentLabel ? (
         <li>
-          <NavLink className="text-decoration-none fw-medium fs-6 breadcrumb-link" to={`/${navigate}`}>{page2}</NavLink>
+          <NavLink className="text-decoration-none fw-medium fs-6 breadcrumb-link" to={`/${parentPath}`}>
+            {parentLabel}
+          </NavLink>
         </li>
-        :
-        <li className="fs-6 text-secondary">{page2}</li>
-      }
+      ) : (
+        <li className="fs-6 text-secondary">{parentLabel}</li>
+      )}
 
-      {page3 &&
+      {currentLabel && (
         <>
           <li className="fs-6 text-secondary">/</li>
-          <li className="fs-6 text-secondary">{page3}</li>
+          <li className="fs-6 text-secondary">{currentLabel}</li>
         </>
-      }
+      )}
     </ul>
   );
 };
