@@ -74,7 +74,7 @@ const ProductCard = ({ data }) => {
 
         <div className="button-container d-flex flex-column justify-content-center">
           <div className="rating" style={{fontSize:12}}>
-            <RatingStar rating={data?.avg_rate} /> ({data?.total_review})
+            <RatingStar rating={data?.total_review === "0" ? 0: data?.avg_rate} /> ({data?.total_review})
           </div>
 
           <NavLink to={`/product-details/${data?.id}`} className="buy-button button d-flex align-items-center justify-content-center gap-2 text-decoration-none">

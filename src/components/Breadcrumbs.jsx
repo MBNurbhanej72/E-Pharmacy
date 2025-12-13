@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Breadcrumbs = ({ parentLabel, currentLabel, parentPath }) => {
   return (
-    <ul className="breadcrumbs d-flex gap-2 p-0">
+    <ul className="breadcrumbs d-flex gap-2 p-0 mb-50">
       <li>
         <NavLink className="text-decoration-none fw-medium fs-6 breadcrumb-link" to="/">Home</NavLink>
       </li>

@@ -9352,6 +9352,7 @@ a.rate-review:hover i {
 
 .contact-form__rate {
   margin-bottom: 0;
+  font-weight: 500;
 }
 
 .contact-form__rate-bx {
@@ -9368,9 +9369,9 @@ a.rate-review:hover i {
 .contact-form__rate-bx-show {
   display: inline-block;
   color: #888999;
-  font-weight: 300;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .contact-form__upload-btn {

@@ -714,7 +714,7 @@ body {
 
 /* THUMBNAIL FIX HEIGHT (optional but recommended) */
 .gallery-thumbs-swiper {
-  margin-top: 15px;
+  margin-top: 20px;
   height: 80px;
 }
 
@@ -1631,13 +1631,15 @@ body {
 
 .pd-buy-btn button {
   width: auto;
-  padding: 10px 30px;
+  height: auto;
+  padding: 7px 25px;
+  margin-left: 22px;
 }
 
 .pd-upper-details .favorite {
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   top: -20px;
   right: -10px;
   cursor: pointer;
@@ -1915,12 +1917,96 @@ body {
 
 
 
+.review-swiper {
+  margin-top: 10px;
+}
+
+/* Swiper slide height auto so cards equal nicely */
+.review-swiper .swiper-slide {
+  height: auto;
+}
+
+/* Card style – portrait / square-ish */
+.review-slide {
+  height: 100%;
+  min-height: 130px;
+  /* thoda portrait feel */
+  padding: 16px 18px;
+  border-radius: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Top row (name + date) */
+.review-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.review-name {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.review-slide .customer-text {
+  font-weight: 500 !important;
+  color: var(--grey-text) !important;
+  word-wrap: break-word;
+}
+
+/* Progressbar pagination (bar style) */
+.review-swiper-progress .swiper-pagination-progressbar {
+  position: relative;
+  height: 4px;
+  background: rgba(1, 139, 200, 0.25);
+  border-radius: 999px;
+  overflow: hidden;
+  border: none !important;
+  margin-top: 14px;
+}
+
+.review-swiper-progress .swiper-pagination-progressbar-fill {
+  background: var(--primary-color) !important;
+  border-radius: 999px;
+}
+
+
+
+
+.pd-print-btn {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: 1.5px solid transparent;
+  transition: all 0.4s;
+}
+
+.pd-print-btn:hover {
+  background-color: transparent;
+  border: 1.5px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
 .product-invoice-page {
   max-width: 1100px;
 }
 
 .product-invoice-card {
   border-radius: 1rem;
+  background: #fff;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .product-invoice-card:hover {
@@ -1932,7 +2018,7 @@ body {
   background: #f8f9fa;
   padding: 0.75rem;
   border-radius: 0.85rem;
-  height: 350px;
+  height: 385px;
 }
 
 .pi-main-image {
@@ -1989,8 +2075,8 @@ body {
 }
 
 .pi-disclaimer-box {
-  background: #fff8e1;
-  border: 1px dashed #ffb300;
+  background: #ffe1e1;
+  border: 1px dashed #ff0000;
 }
 
 .pi-rating-stars {
@@ -2032,32 +2118,104 @@ body {
   color: #1b5e20;
 }
 
-/* PRINT MODE FIX */
-@media print {
+.card-header {
+  padding: 16px !important;
+  border-radius: 10px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
 
-  /* Container width fix */
+.card-body {
+  padding: 16px !important;
+  padding-left: 12px !important;
+}
+
+.pi-main-image-wrapper {
+  border-radius: 10px !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+
+@media print {
   .product-invoice-page {
-    max-width: 700px !important;
+    max-width: 100% !important;
     margin: 0 auto !important;
   }
 
-  /* Image wrapper height fix */
   .pi-main-image-wrapper {
-    height: 300px !important;   /* reduce height */
+    height: 300px !important;
+    width: 100% !important;
     padding: 6px !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
   }
 
-  /* Main image fix */
   .pi-main-image {
     width: 100% !important;
     height: 100% !important;
     object-fit: contain !important;
   }
 
-  /* All thumbnails small */
   .pi-thumb {
     width: 40px !important;
     height: 40px !important;
+  }
+
+  .card-header,
+  .card-body {
+    margin: 0 !important;
+    padding: 12px !important;
+  }
+
+  .card-header > div,
+  .card-body > div {
+    break-inside: avoid !important;
+  }
+
+  .card-header {
+    gap: 0 !important;
+  }
+
+  .card-header p,
+  .card-header h5,
+  .card-header h6 {
+    line-height: 1.2 !important;
+  }
+
+  hr {
+    margin: 8px 0 !important;
+  }
+
+  .container,
+  .row,
+  .col-lg-4,
+  .col-lg-8 {
+    page-break-inside: avoid !important;
+  }
+}
+
+
+@page {
+  size: A4;
+}
+
+@media print {
+  @page {
+    margin: 20mm;  
+  } 
+
+  .product-invoice-page {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    /* Mobile ke print area me fit karne ke liye */
+    transform: scale(0.92) translate(0, 0) !important;
+    transform-origin: top center !important;
+
+    /* Padding rakhne do */
+    padding: 10px !important;
   }
 }
 
