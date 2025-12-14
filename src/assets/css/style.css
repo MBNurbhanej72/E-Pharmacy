@@ -8103,11 +8103,6 @@ td.uncheck i {
   font-weight: 500;
 }
 
-.list-details-section:first-child {
-  padding-top: 30px !important;
-  padding-bottom: 30px !important;
-}
-
 #overview h4 {
   margin-bottom: 10px;
 }
@@ -13056,9 +13051,9 @@ span.infobox_rate {
     margin-bottom: 15px;
   }
 
-  .single-property-details.v1 {
+  /* .single-property-details.v1 {
     margin-top: 350px !important;
-  }
+  } */
 
   .listing-address,
   .property-info {

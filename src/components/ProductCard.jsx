@@ -5,7 +5,7 @@ import RatingStar from "./RatingStar";
 
 const ProductCard = ({ data }) => {
   return (
-    <div className="col-xl-3 col-md-6 col-sm-12 mb-5">
+    <div className="col-xl-3 col-md-6 col-sm-12 mb-0 gy-5">
       <div className="card h-100 justify-content-between">
         <div className="image-container">
           <div
@@ -15,7 +15,7 @@ const ProductCard = ({ data }) => {
               height: "100%",
               // background: "radial-gradient(circle, #ffffff 20%, #bcbcbc 100%)",
               background: "radial-gradient(circle, #ffffff 20%, #93d7f2   100%)",
-              borderRadius: "0.7rem 4rem 0.7rem 0.7rem",
+              borderRadius: "0.7rem 4.5rem 0.7rem 0.7rem",
               position: "absolute",
               top: 0,
               left: 0,
@@ -64,12 +64,11 @@ const ProductCard = ({ data }) => {
         </label>
 
         <div className="content">
-          <div className="brand">By: {data?.manufacturer_name}</div>
-          <NavLink className="product-name" to={`/product-details/${data?.id}`}>{data?.product_name}</NavLink>
-          <div className="color-size-container">
+          <div className="brand single-line-ellipsis">By: {data?.manufacturer_name}</div>
+          <NavLink className="product-name single-line-ellipsis" to={`/product-details/${data?.id}`}>{data?.product_name}</NavLink>
+          <div className="color-size-container single-line-ellipsis">
             [{data?.sub_category_name}]
           </div>
-
         </div>
 
         <div className="button-container d-flex flex-column justify-content-center">

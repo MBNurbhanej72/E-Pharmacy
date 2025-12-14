@@ -66,7 +66,7 @@ const Products = () => {
   return (
     <>
       {/*Listing filter starts*/}
-      <div className="filter-wrapper style1 section-padding mb-20">
+      <div className="filter-wrapper style1 section-padding mb-120 pb-0">
         <div className="container">
 
           {/* Breadcrumbs Start */}
@@ -75,7 +75,7 @@ const Products = () => {
 
           <div className="row">
             {/*Listing filter starts*/}
-            <div className="container">
+            {/* <div className="container">
               <div className="row">
                 <div className="col-md-12">
                   <form className="hero__form v1 filter listing-filter property-filter">
@@ -354,13 +354,12 @@ const Products = () => {
                   </form>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/*Listing filter ends*/}
             <div className="col-md-12">
-              <div className="row pt-60   align-items-center">
+              {/* <div className="row pt-60   align-items-center">
                 <div className="col-lg-3 col-sm-5 col-5">
                   <div className="item-view-mode res-box">
-                    {/* item-filter-list Menu starts */}
                     <ul className="nav item-filter-list" role="tablist">
                       <li>
                         <a className="active" data-toggle="tab" href="#grid-view">
@@ -373,7 +372,6 @@ const Products = () => {
                         </a>
                       </li>
                     </ul>
-                    {/* item-filter-list Menu ends */}
                   </div>
                 </div>
                 <div className="col-lg-4 col-sm-7 col-7">
@@ -398,7 +396,7 @@ const Products = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="item-wrapper pt-40">
                 {isPending ? <div className="loader-main"><span className="loader" /></div> :
                   <div className="tab-content" id="myTabContent">

@@ -695,7 +695,8 @@ body {
   height: 350px;
   background: transparent;
   border-radius: 10px;
-  border: 1.5px solid #BDC1CA;
+  /* border: 1.5px solid #BDC1CA; */
+  border: 2px solid #bfe2f1;
   padding: 10px !important;
 }
 
@@ -723,7 +724,8 @@ body {
   height: 100%;
   object-fit: contain;
   border-radius: 5px;
-  border: 1.5px solid #BDC1CA;
+  /* border: 1.5px solid #BDC1CA; */
+  border: 1.5px solid #bfe2f1;
   padding: 5px !important;
 }
 
@@ -1343,8 +1345,8 @@ body {
 
 .card .favorite {
   position: absolute;
-  width: 19px;
-  height: 19px;
+  width: 22px;
+  height: 22px;
   top: 5px;
   right: 5px;
   cursor: pointer;
@@ -1384,6 +1386,14 @@ body {
   color: #4c4c4c;
   font-size: 15px;
   text-decoration: none;
+}
+
+.single-line-ellipsis {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .card .content .product-name:hover {
@@ -1480,6 +1490,11 @@ body {
   }
 }
 
+
+.pd-top-div {
+  position: relative;
+  padding: 35px 20px !important;
+}
 
 .pd-product-name {
   color: #4b4b4b;
@@ -1584,7 +1599,7 @@ body {
   background-color: var(--primary-color);
   color: var(--white-color);
   border: 1.5px solid transparent;
-  transition: all 0.4s;
+  transition: background-color 0.4s, border-color 0.4s, color 0.4s;
 }
 
 .pd-quantity button:hover,
@@ -1593,6 +1608,10 @@ body {
   background-color: transparent;
   border: 1.5px solid var(--primary-color);
   color: var(--primary-color);
+}
+
+.pd-pin-code button {
+  padding: 18.5px 10px !important;
 }
 
 .pd-quantity input,
@@ -1636,29 +1655,29 @@ body {
   margin-left: 22px;
 }
 
-.pd-upper-details .favorite {
+#gallery .favorite {
   position: absolute;
   width: 25px;
   height: 25px;
-  top: -20px;
-  right: -10px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 
-.pd-upper-details .favorite input {
+#gallery .favorite input {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.pd-upper-details .favorite input:checked~svg {
+#gallery .favorite input:checked~svg {
   animation: bouncing 0.5s;
   fill: rgb(255, 95, 95);
   filter: drop-shadow(0px 3px 1px rgba(53, 53, 53, 0.14));
 }
 
-.pd-upper-details .favorite svg {
+#gallery .favorite svg {
   fill: var(--grey-text);
 }
 
@@ -1794,6 +1813,10 @@ body {
   font-weight: 600;
   color: #4b4b4b;
   transition: all 0.4s;
+}
+
+.entry-title:hover {
+  color: var(--primary-color);
 }
 
 .card.property-card .price {
@@ -1933,7 +1956,8 @@ body {
   /* thoda portrait feel */
   padding: 16px 18px;
   border-radius: 8px;
-  border: 2px solid rgba(0, 0, 0, 0.06);
+  /* border: 2px solid rgba(0, 0, 0, 0.06); */
+  border: 1.5px solid #bfe2f1;
   background-color: #ffffff;
 
   display: flex;
@@ -2169,8 +2193,8 @@ body {
     padding: 12px !important;
   }
 
-  .card-header > div,
-  .card-body > div {
+  .card-header>div,
+  .card-body>div {
     break-inside: avoid !important;
   }
 
@@ -2197,32 +2221,6 @@ body {
 }
 
 
-@page {
-  size: A4;
-}
-
-@media print {
-  @page {
-    margin: 20mm;  
-  } 
-
-  .product-invoice-page {
-    width: 100% !important;
-    max-width: 100% !important;
-
-    /* Mobile ke print area me fit karne ke liye */
-    transform: scale(0.92) translate(0, 0) !important;
-    transform-origin: top center !important;
-
-    /* Padding rakhne do */
-    padding: 10px !important;
-  }
-}
-
-
-
-
-
 
 
 /** =====  Start Media Queries Section  ===== **/
@@ -2247,6 +2245,16 @@ body {
 
   .cancel-icon {
     display: block !important;
+  }
+
+  .pd-upper-details .favorite {
+    top: -2px;
+    right: 10px;
+  }
+
+  .pd-top-div {
+    padding-top: 45px !important;
+    padding-bottom: 45px !important;
   }
 
   /*?  B - 992px to 1280px   lg  ?*/
@@ -2305,6 +2313,47 @@ body {
     width: 28px;
   }
 
+  .section-padding {
+    padding-top: 25px;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 25px !important;
+  }
+
+  .breadcrumbs a,
+  .breadcrumbs li {
+    font-size: 14px !important;
+    line-height: 20px !important;
+  }
+
+  .property-details-wrap {
+    padding-bottom: 50px !important;
+  }
+
+  #gallery .d-flex.justify-content-between.mt-2 {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  #gallery .d-flex.justify-content-between.mt-2 .text-center {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 22px !important;
+  }
+
+  #gallery .d-flex.justify-content-between.mt-2 .text-center p {
+    margin-top: 0 !important;
+  }
+
+  .pd-buy-btn button {
+    margin-left: 18px;
+  }
+
+  .pd-quantity .d-flex.align-items-center:first-child{
+    gap: 16px !important;
+  }
 
   /*?  B - 576px to 768px   sm  ?*/
 }
@@ -2319,13 +2368,37 @@ body {
     width: 130px !important;
   }
 
+  .breadcrumbs a,
+  .breadcrumbs li {
+    font-size: 12px !important;
+  }
+
+  .pd-quantity{
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+  }
+
+  .pd-buy-btn button {
+    margin-left: 0;
+  }
+
+  .spec-list li span {
+    width: 170px;
+  }
+
   /*?  B - 430px to 576px   sm  ?*/
 }
 
 @media only screen and (max-width: 390px) {
 
+  .spec-list li span {
+    width: 150px;
+  }
 
   /*?  B - 390px to 430px   sm  ?*/
 }
 
 /** =====  End Media Queries Section  ===== **/
+
+

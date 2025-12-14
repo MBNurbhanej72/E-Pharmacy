@@ -24,7 +24,7 @@ const Blogs = () => {
     <>
       <div className="page-wrapper">
         {/*Blog post starts*/}
-        <div className="blog-area section-padding pb-40">
+        <div className="blog-area section-padding mb-120 pb-0">
           <div className="container">
 
             {/* Breadcrumbs Start */}
@@ -38,10 +38,10 @@ const Blogs = () => {
             </div>
 
             <div className="row">
-              <div className="col-md-12">
+              <div className="col-md-12 d-flex flex-column align-items-center gap-4">
                 {isPending ? <div className="loader-main"><span className="loader" /></div> : Array.isArray(blogs) && blogs?.length ? (
                   blogs.map((e) => (
-                    <div className="single-blog-item v3 mb-4" key={e.id}>
+                    <div className="single-blog-item v3 mb-0" key={e.id}>
                       <div className="row align-items-center">
                         {/* IMAGE LEFT */}
                         <div className="col-md-4">
